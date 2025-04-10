@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación Personero Escolar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Votación Escolar</h1>
+        <div id="userInfo" class="hidden">
+            <span class="user-greeting">Hola, <span id="loggedInUser"></span>!</span>
+            <span id="votingStatusMessage" class="voting-status"></span>
+            <button id="logoutBtn" class="button-secondary button-small">Salir</button>
+        </div>
+    </header>
+
+    <!-- Sección de Login -->
+    <div id="loginSection" class="container">
+        <div class="card login-card">
+            <h2>¡Bienvenido a la Votación!</h2>
+            <p class="login-subtitle">Ingresa tu nombre para votar por el Personero.</p>
+            <form id="loginForm">
+                <label for="userNameInput" class="sr-only">Tu Nombre:</label>
+                <input type="text" id="userNameInput" required placeholder="Escribe tu nombre completo...">
+                <button type="submit" id="loginBtn" class="button-primary button-full-width">Entrar</button>
+                <p id="loginStatus" class="status-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal -->
+    <main id="appContainer" class="container hidden">
+        <!-- Tarjeta ÚNICA para la elección -->
+        <div id="electionCard" class="card election-card hidden">
+            <h2 id="electionCardTitle">Elección de Personero</h2>
+            <!-- Mensaje de estado principal (Ej: "Selecciona...", "Ya votaste...") -->
+            <p id="electionCardStatus" class="status-text"></p>
+
+            <!-- Contenedor donde se mostrarán los candidatos O los resultados -->
+            <div id="electionCardContent">
+                <!-- El contenido (listas ul) será insertado aquí por JavaScript -->
+            </div>
+
+            <!-- Área de botones y mensajes de estado de voto -->
+            <div id="electionCardActions" class="action-area">
+                 <button type="button" id="submitVoteBtn" class="button-primary button-vote hidden">Confirmar Mi Voto</button>
+                 <p id="voteStatus" class="status-message"></p>
+            </div>
+
+             <!-- Información del creador de la encuesta -->
+            <p id="voteCreatorInfo" class="creator-info-subtle"></p>
+        </div>
+
+         <!-- Sección de creación (Oculta por defecto para estudiantes) -->
+         <div class="column column-create hidden">
+            <div id="createPollSection" class="card">
+                 <h2>Crear Nueva Elección (Admin)</h2>
+                 <form id="createPollForm">
+                     <div>
+                         <label for="pollTitle">Cargo o Pregunta:</label>
+                         <input type="text" id="pollTitle" required placeholder="Ej: Elección de Personero 2024">
+                     </div>
+                     <fieldset>
+                         <legend>Candidatos (Mínimo 2)</legend>
+                         <div id="candidateInputs">
+                             <div><input type="text" placeholder="Nombre Candidato 1" class="candidate-option" required></div>
+                             <div><input type="text" placeholder="Nombre Candidato 2" class="candidate-option" required></div>
+                         </div>
+                         <button type="button" id="addCandidateBtn" class="button-secondary button-small add-option-btn">
+                             + Añadir Candidato
+                         </button>
+                     </fieldset>
+                     <button type="submit" id="savePollBtn" class="button-primary button-full-width">Publicar Elección</button>
+                     <p id="createStatus" class="status-message"></p>
+                 </form>
+            </div>
+         </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

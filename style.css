@@ -1,0 +1,300 @@
+/* Reset básico y fuente */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f0f4f8; /* Tono azul grisáceo claro */
+    color: #334155; /* Azul oscuro/gris para texto */
+    padding: 20px;
+    min-height: 100vh; /* Asegurar que ocupe al menos toda la altura */
+    display: flex; /* Ayuda a centrar contenido si es poco */
+    flex-direction: column;
+}
+
+/* Contenedores */
+.container {
+    width: 100%; /* Ocupar ancho completo */
+    max-width: 700px; /* Ancho máximo general */
+    margin: 0 auto; /* Centrar */
+    padding: 0 15px; /* Padding lateral en pantallas pequeñas */
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    color: #1e3a8a; /* Azul oscuro principal */
+    padding: 15px 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permitir que los elementos se muevan abajo en pantallas pequeñas */
+    gap: 15px; /* Espacio entre logo y user info */
+    box-shadow: 0 2px 10px rgba(100, 116, 139, 0.1); /* Sombra suave */
+    border: 1px solid #e2e8f0;
+}
+header h1 { font-size: 1.6em; font-weight: 600; margin: 0; } /* Quitar margen por defecto */
+#userInfo { display: flex; align-items: center; gap: 15px; }
+.user-greeting { font-weight: 500; color: #475569; } /* Gris azulado */
+.voting-status { /* Estilo de estado de voto en header */
+    font-size: 0.85em;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 15px; /* Más redondeado */
+    color: white;
+    white-space: nowrap; /* Evitar que se parta el texto */
+}
+.voting-status.voted { background-color: #10b981; } /* Verde esmeralda */
+.voting-status.not-voted { background-color: #f59e0b; } /* Ámbar */
+
+/* Tarjetas (Cards) */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px; /* Bordes más redondeados */
+    padding: 30px; /* Más padding interno */
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(100, 116, 139, 0.1);
+    border: 1px solid #e2e8f0;
+}
+.card h2 {
+    color: #1e3a8a;
+    margin-bottom: 10px; /* Menos espacio después del título principal */
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #f1f5f9; /* Línea separadora muy sutil */
+    padding-bottom: 15px;
+    margin-top: 0; /* Quitar margen superior por defecto */
+    margin-bottom: 20px;
+}
+
+/* Tarjeta de Login Específica */
+.login-card {
+    max-width: 450px;
+    margin: 50px auto;
+    text-align: center;
+}
+.login-subtitle { color: #64748b; margin-bottom: 25px; }
+
+/* Formularios */
+input[type="text"] {
+    padding: 12px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    margin-bottom: 20px; /* Espacio debajo del input */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: #3b82f6; /* Azul primario */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+input::placeholder { color: #94a3b8; }
+
+/* Botones */
+button { /* Estilo base para botones */
+    font-family: 'Poppins', sans-serif; /* Heredar fuente */
+}
+.button-primary, .button-secondary {
+    display: inline-block;
+    padding: 12px 25px; /* Un poco más anchos */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-decoration: none; /* Para links si se usan como botones */
+}
+.button-primary {
+    background-color: #2563eb; /* Azul primario más vibrante */
+    color: white;
+}
+.button-primary:hover:not(:disabled) { background-color: #1d4ed8; transform: translateY(-1px); } /* Efecto hover sutil */
+.button-primary:disabled { background-color: #93c5fd; cursor: not-allowed; } /* Estilo deshabilitado */
+
+.button-secondary {
+    background-color: #f1f5f9; /* Gris muy claro */
+    color: #334155;
+    border: 1px solid #e2e8f0;
+}
+.button-secondary:hover:not(:disabled) { background-color: #e2e8f0; transform: translateY(-1px); }
+.button-secondary:disabled { background-color: #f8fafc; color: #cbd5e1; cursor: not-allowed; }
+
+.button-small { padding: 8px 15px; font-size: 0.9rem; }
+.button-full-width { width: 100%; }
+.button-vote { width: 100%; max-width: 300px; margin: 0 auto; display: block; } /* Botón de voto centrado */
+
+
+/* Tarjeta Principal de Elección */
+#appContainer { margin-top: 30px; } /* Espacio superior para la tarjeta principal */
+.election-card {
+    text-align: center; /* Centrar texto dentro de la tarjeta principal */
+}
+.status-text { /* Para el mensaje principal debajo del título */
+    color: #475569;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+#electionCardContent {
+    margin-bottom: 30px; /* Espacio antes del área de acción */
+    text-align: left; /* Alinear contenido (listas) a la izquierda */
+}
+.action-area {
+    min-height: 60px; /* Espacio reservado para botón y mensaje */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px; /* Espacio sobre el área de acción */
+}
+.creator-info-subtle { /* Información del creador menos prominente */
+    font-size: 0.85em;
+    color: #94a3b8; /* Gris claro */
+    margin-top: 25px;
+    text-align: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 15px;
+}
+
+/* Lista de Candidatos (Votación) */
+#voteCandidateList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre candidatos */
+}
+#voteCandidateList li {
+    background-color: #f8fafc; /* Fondo muy claro */
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+#voteCandidateList li:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+#voteCandidateList input[type="radio"] {
+    margin-right: 15px;
+    width: 1.1em; /* Tamaño del radio */
+    height: 1.1em;
+    accent-color: #2563eb; /* Color del check del radio */
+    cursor: pointer;
+    flex-shrink: 0; /* Evitar que el radio se encoja */
+}
+#voteCandidateList label {
+    font-weight: 500;
+    color: #334155;
+    cursor: pointer;
+    flex-grow: 1;
+}
+/* Estilo cuando un radio está seleccionado (opcional, mejora visual) */
+#voteCandidateList input[type="radio"]:checked + label {
+    color: #1e3a8a;
+}
+#voteCandidateList li:has(input[type="radio"]:checked) { /* Estilo al li padre */
+     border-color: #3b82f6;
+     background-color: #eff6ff; /* Azul muy pálido */
+}
+/* Estilo cuando está deshabilitado (ya votó) */
+#voteCandidateList input[type="radio"]:disabled + label {
+    color: #94a3b8 !important; /* Texto más claro si está deshabilitado */
+    cursor: default;
+}
+#voteCandidateList li:has(input[type="radio"]:disabled) {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+    cursor: default;
+    opacity: 0.7; /* Hacerlo un poco transparente */
+}
+
+
+/* Lista de Resultados */
+#pollResultsList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#pollResultsList li {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #3b82f6; /* Barra lateral azul */
+    border-radius: 6px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left; /* Asegurar alineación izquierda */
+}
+.result-option {
+    font-weight: 500;
+    color: #1e3a8a;
+}
+.result-votes {
+    font-weight: 600;
+    background-color: #e0f2fe; /* Fondo azul cielo muy claro */
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: #0c4a6e; /* Azul más oscuro para el número */
+    font-size: 0.95em;
+    white-space: nowrap; /* Evitar que se parta el texto de votos */
+}
+
+/* Mensajes de Estado (Login, Voto, Creación) */
+.status-message {
+    margin-top: 10px; /* Menos espacio arriba */
+    font-weight: 500;
+    min-height: 1.5em;
+    text-align: center;
+    font-size: 0.95em;
+    padding: 8px 12px; /* Añadir padding a los mensajes */
+    border-radius: 6px; /* Bordes redondeados */
+    display: inline-block; /* Para que el fondo no ocupe todo el ancho */
+    max-width: 100%; /* Evitar que se desborde */
+    box-sizing: border-box;
+}
+/* Limpiar estilos base si no hay mensaje */
+.status-message:empty {
+    padding: 0;
+    margin-top: 0;
+}
+.status-message.error { color: #b91c1c; background-color: #fee2e2; border: 1px solid #fecaca; } /* Rojo */
+.status-message.success { color: #166534; background-color: #dcfce7; border: 1px solid #bbf7d0; } /* Verde */
+.status-message.info { color: #475569; background-color: #f1f5f9; border: 1px solid #e2e8f0; } /* Gris */
+
+/* Utilidades */
+.hidden { display: none !important; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsividad Básica */
+@media (max-width: 600px) {
+    body { padding: 15px; }
+    .container { padding: 0 10px; }
+    header { flex-direction: column; gap: 10px; text-align: center; padding: 15px; }
+    .card { padding: 20px; }
+    header h1 { font-size: 1.4em; }
+    #userInfo { justify-content: center; flex-wrap: wrap; }
+    .button-vote { max-width: none; } /* Ocupar todo el ancho en móvil */
+}
